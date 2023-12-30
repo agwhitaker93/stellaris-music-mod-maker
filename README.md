@@ -2,17 +2,32 @@
 
 A simple javascript project to automate music mod creation for Stellaris
 
+Music in Stellaris must use the ogg format, and are recommended to use a sample rate of 44.1 kHz
+
 ## Requirements
 
-- Node JS
-- FFmpeg
+* Node JS
+* FFmpeg
 
 ## Usage
 
-1. Copy your music into the "music" folder. The structure isn't important, the script will crawl all subdirectories
-2. Optionally update "main.js" with the name of your mod, and add any audio formats missing from the list
-3. Run the script
+1. Copy your music into the "music" folder. Tracks put directly in the folder will go into a mod called "My Custom Music". Any sub-folders will be put into separate mods
+``` bash
+music/Keygen Church # will create a mod called "Keygen Church Music" with id "keygen-church-music"
+music/Keygen Church/█ ▓ # will be included in the mod "Keygen Church"
+music/Going Under # will create a mod called "Going Under Music" with id "going-under-music"
+music/my-song.mp3 # will be put into a mod called "My Custom Music" with id "my-custom-music"
+```
+2. Run the script
 ```bash
 $ node main.js
 ```
-4. Copy the contents of the "mod" directory to the Stellaris mod directory (refer to [the wiki](https://stellaris.paradoxwikis.com/Modding#Mod_folder_location))
+3. Copy the contents of the "mod" directory to the Stellaris mod directory (refer to [the wiki](https://stellaris.paradoxwikis.com/Modding#Mod_folder_location))
+
+Currently attempts to convert the following file types:
+
+* m4a
+* flac
+* mp3
+* wma
+* ogg
